@@ -37,7 +37,7 @@ int main()
 //    std::cout<<s1.SystemState()<<std::endl;
 //    }
 
-    s1.saveSystemStatesToFile("system.csv",10000);
+    s1.saveSystemStatesToFile("system1.csv",10000);
 
     return 0;
 }
