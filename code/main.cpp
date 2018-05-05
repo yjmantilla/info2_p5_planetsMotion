@@ -1,43 +1,54 @@
 #include <iostream>
 #include "particle.h"
 #include "particlesystem.h"
+#define NUMBER_OF_STATES 10000
 
 int main()
 {
-    std::cout << "Hello World!" << std::endl;
+    /*System 1*/
 
-    Particle p1(70,0,-7000,2,0,0,0);
-    Particle p2(70000,0,0,0,0,0,0);
-    Particle p3(25,4000,5000,-1.6,1.2,0,0);
+    /*Create Particles*/
+    Particle p10(70,0,-7000,2,0,0,0);
+    Particle p11(70000,0,0,0,0,0,0);
+    Particle p12(25,4000,5000,-1.6,1.2,0,0);
 
-    std::cout<<p1.getXPosition()<<"\n";
-
+    /*Create System 1*/
     ParticleSystem s1(1,1);
-    std::cout<<s1.getG()<<"\n";
 
-    s1.addParticle(p3);
-    s1.addParticle(p2);
-    s1.addParticle(p1);
-//123 g
-//132 g
-//231 g
-//213 g
-//312 g
-//321
-//    std::cout<<s1.distanceBetweenParticles(p1,p2)<<std::endl;
-//    std::cout<<s1.angleBetweenParticles(p1,p2)<<std::endl;
-//    std::cout<<s1.angleBetweenParticles(p2,p1)<<std::endl;
+    /*Add Particles To System 1*/
+    s1.addParticle(p10);
+    s1.addParticle(p11);
+    s1.addParticle(p12);
+
+    /*Save System 1 States To File*/
+    s1.saveSystemStatesToFile("system1.csv",NUMBER_OF_STATES);
+
+    /*------------------------------------*/
+
+    /*System 2*/
+
+    /*Create Particles*/
+
+    Particle p20(50000,0,0,0,0,0,0);
+    Particle p21(70,-5000,0,0,-2,0,0);
+    Particle p22(70,5000,0,0,2,0,0);
+    Particle p23(70,0,-5000,2,0,0,0);
+    Particle p24(70,0,5000,-2,0,0,0);
+
+    /*Create System 2*/
+    ParticleSystem s2(1,1);
+
+    /*Add Particles To System 2*/
+    s2.addParticle(p20);
+    s2.addParticle(p21);
+    s2.addParticle(p22);
+    s2.addParticle(p23);
+    s2.addParticle(p24);
+
+    /*Save System 2 States To File*/
+    s2.saveSystemStatesToFile("system2.csv",NUMBER_OF_STATES);
 
 
-    std::cout<<s1.SystemState()<<std::endl;
-
-//    for (unsigned int i = 0; i < 200; i++)
-//    {
-//    s1.evolveSystem(1);
-//    std::cout<<s1.SystemState()<<std::endl;
-//    }
-
-    s1.saveSystemStatesToFile("system1.csv",10000);
 
     return 0;
 }
